@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nicolezan-colourpaint</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="window">
+      <header class="title-bar">
+        <div class="traffic-lights" aria-hidden="true">
+          <span class="light close"></span>
+          <span class="light minimize"></span>
+          <span class="light zoom"></span>
+        </div>
+        <h1 id="window-title">nicolezan-colourpaint</h1>
+        <div class="title-bar-spacer" aria-hidden="true"></div>
+      </header>
+
+      <nav class="menu-bar" aria-label="File menu">
+        <button type="button" id="btn-new">New</button>
+        <button type="button" id="btn-open">Open</button>
+        <button type="button" id="btn-save">Save</button>
+        <span class="menu-sep"></span>
+        <button type="button" id="btn-undo">Undo</button>
+        <button type="button" id="btn-redo">Redo</button>
+        <span class="menu-sep"></span>
+        <button type="button" id="btn-clear">Clear</button>
+        <span class="app-name">nicolezan-colourpaint</span>
+        <input type="file" id="file-input" accept="image/*" hidden />
+      </nav>
+
+      <div class="workspace">
+        <aside class="toolbox" aria-label="Tools">
+          <button type="button" class="tool active" data-tool="pencil" title="Pencil">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 21l3.5-1 12-12-2.5-2.5-12 12L3 21z" />
+              <path d="M15 4.5l2.5 2.5 1.8-1.8a1.5 1.5 0 0 0 0-2.1L18 1.7a1.5 1.5 0 0 0-2.1 0z" />
+            </svg>
+          </button>
+          <button type="button" class="tool" data-tool="brush" title="Brush">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 14c-2 0-4 1.5-4 4 0 1.5 1.2 3 3 3 3 0 5-3 5-6H7z" />
+              <path d="M11 15l8-10 2 2-8 10z" />
+            </svg>
+          </button>
+          <button type="button" class="tool" data-tool="eraser" title="Eraser">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 14l8-8 8 8-5 5H9z" />
+            </svg>
+          </button>
+          <button type="button" class="tool" data-tool="fill" title="Fill">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 12l8-8 8 8-8 8z" />
+              <path d="M16 18c1.5 0 3 1 3 2.5S18 22 16 22s-3-.7-3-2.2 1.5-1.8 3-1.8z" />
+            </svg>
+          </button>
+          <button type="button" class="tool" data-tool="line" title="Line">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 20L20 4" />
+            </svg>
+          </button>
+          <button type="button" class="tool" data-tool="rect" title="Rectangle">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="6" width="16" height="12" />
+            </svg>
+          </button>
+          <button type="button" class="tool" data-tool="ellipse" title="Ellipse">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <ellipse cx="12" cy="12" rx="8" ry="6" />
+            </svg>
+          </button>
+          <button type="button" class="tool" data-tool="picker" title="Color picker">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M11 3l2 2-8 8v3h3l8-8 2 2" />
+              <circle cx="18" cy="6" r="2.2" />
+            </svg>
+          </button>
+        </aside>
+
+        <main class="canvas-wrap">
+          <canvas id="canvas" width="900" height="560"></canvas>
+        </main>
+      </div>
+
+      <footer class="bottom-bar">
+        <div class="color-bar">
+          <div class="active-colors" aria-label="Current colors">
+            <button type="button" id="fg-swatch" class="swatch-large fg" title="Foreground color"></button>
+            <button type="button" id="bg-swatch" class="swatch-large bg" title="Background color"></button>
+          </div>
+          <div class="palette" id="palette" role="listbox" aria-label="Color palette"></div>
+          <label class="size-control">
+            Size
+            <input type="range" id="brush-size" min="1" max="40" value="3" />
+            <span id="size-label">3</span>
+          </label>
+          <label class="custom-color">
+            Custom
+            <input type="color" id="custom-color" value="#000000" />
+          </label>
+        </div>
+        <p class="status" id="status">Pencil · left click draws, right click uses the background color</p>
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
